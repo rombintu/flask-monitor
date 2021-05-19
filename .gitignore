@@ -1,0 +1,4 @@
+venv
+config.py
+project/db.sqlite
+__pycache__
