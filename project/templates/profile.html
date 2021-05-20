@@ -3,25 +3,25 @@
 {% block content %}
 <h1 class="title">
     Welcome, {{ name }}!
-    <br>
-    <br>
-    <br>
-    <div style="display: flex; justify-content: space-between; margin: 20px;">
-      <div class="box" style="width: 30%; background-color:#12e2c3; color: white;">
-        <p>Hostname</p>
-        <p style="size: 12px;">ip address</p>
-        <br>
-        <p>CPU - 35%</p>
-        <progress class="progress is-large is-info" max="100" value="35">monitor</progress>
-        <p>MEM - 45%</p>
-        <progress class="progress is-large is-info" max="100" value="45">monitor</progress>
-        <p>NET - 78%</p>
-        <progress class="progress is-large is-info" max="100" value="78">monitor</progress>
-        <button class="button is-info">Обновить данные</button>
-      </div>
-      
-    </div>
-    
-    
 </h1>
+<br>
+<br>
+{% if agents %}
+  {% for agent in agents %}
+    <div class="box" style="display: flex; justify-content: space-between; align-items: center;">
+      <p class="title" style="color: black;">Hostname: {{agent.hostname}}</p>
+      <p>Последнее обновление: {{agent.data_fresh}}</p>
+      <a href="/agent/{{agent.id}}"><button class="button is-info">Подробнее</button></a>
+    </div>
+  {% endfor %}
+  
+{% else %}
+  <div class="box" style="display: flex; justify-content: space-between;">
+    <p>Агенты не найдены</p>
+    <a href="/profile"><button class="button is-info">Обновить страницу</button></a>
+  </div>
+{% endif %}
+<a href="/add_agent"><button class="button is-info">Добавить агента</button></a>
+
+
 {% endblock %}

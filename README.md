@@ -10,5 +10,6 @@ python
 >>> from project import db, create_app
 >>> db.create_all(app=create_app())
 >>> exit
-flask run
+cp .env.bak .env
+python3 -m flask run
 ```
