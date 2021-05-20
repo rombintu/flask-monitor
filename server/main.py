@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from . import db
 from requests import get
@@ -33,8 +33,6 @@ def agents(id):
 @main.route('/add_agent')
 @login_required
 def add_agent():
-    # agents = Agent.query.all()
-    # return render_template('profile.html', name=current_user.name, agents=agents)
     return render_template('add_agent.html')
 
 @main.route('/commit_agent', methods=['POST'])
@@ -53,7 +51,7 @@ def update_agent():
     agent = Agent.query.filter_by(id=id).first()
     ip = agent.get_ip()
     try:
-        data = json.loads(get(f'http://{ip}/info.json', timeout=3).text)
+        data = json.loads(get(f'http://{ip}/info.json', timeout=5).text)
         agent.cpu_min = data['cpu_min']
         agent.cpu_max = data['cpu_max']
         agent.mem_min = data['mem_min']
@@ -64,6 +62,7 @@ def update_agent():
 
         db.session.commit()
     except Exception as e:
+        flash('Connection timeout')
         print(e)
     return redirect(f'/agent/{id}/')
 

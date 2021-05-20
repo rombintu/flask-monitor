@@ -1,4 +1,5 @@
-# FLASK AUTH TEST
+# FLASK MONITORING
+### powered by baso-03-17
 
 ## RUN
 ```
@@ -12,4 +13,11 @@ python
 >>> exit
 cp .env.bak .env
 python3 -m flask run
+```
+
+## RUN ON HTTPS
+```
+sudo apt-get install openssl
+openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
+python3 -m flask run --cert=cert.pem --key=key.pem 
 ```

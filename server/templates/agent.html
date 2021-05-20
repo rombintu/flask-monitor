@@ -8,6 +8,13 @@
 {% if agent %}
     {% for el in agent %}
     <div class="box" style="color:black">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
         <h2 class="title" style="color:black">{{el.hostname}}</h2>
         <h3 class="title" style="color:black">{{el.ip}}</h3>
         <br>

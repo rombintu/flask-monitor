@@ -3,3 +3,4 @@ config.py
 project/db.sqlite
 __pycache__
 .env
+*.pem
