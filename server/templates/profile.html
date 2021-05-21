@@ -2,26 +2,27 @@
 
 {% block content %}
 <h1 class="title">
-    Добро пожаловать, {{ name }}!
+    Личный кабинет: {{ name }}
 </h1>
 <br>
 <br>
 {% if agents %}
   {% for agent in agents %}
-    <div class="box" style="display: flex; justify-content: space-between; align-items: center;">
+    <div class="uk-child-width-expand@s uk-text-cente" style="display: flex; justify-content: space-between; align-items: center;">
       <p class="title" style="color: black;">Hostname: {{agent.hostname}}</p>
       <p>Последнее обновление: {{agent.data_fresh}}</p>
-      <a href="/agent/{{agent.id}}"><button class="button is-info">Подробнее</button></a>
+      <a href="/agent/{{agent.id}}"><button class="uk-button uk-button-default">Подробнее</button></a>
     </div>
   {% endfor %}
   
 {% else %}
-  <div class="box" style="display: flex; justify-content: space-between;">
+  <div class="uk-child-width-expand@s uk-text-cente" style="display: flex; justify-content: space-between;">
     <p>Агенты не найдены</p>
-    <a href="/profile"><button class="button is-info">Обновить страницу</button></a>
+    <a href="/profile"><button class="uk-button uk-button-default">Обновить</button></a>
   </div>
 {% endif %}
-<a href="/add_agent"><button class="button is-info">Добавить агента</button></a>
+
+<a href="/add_agent"><button class="uk-button uk-button-default" style="margin-top: 30%;">Добавить агента</button></a>
 
 
 {% endblock %}

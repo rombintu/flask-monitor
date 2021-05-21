@@ -6,64 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask monitor</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.scss') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.scss') }}"> -->
 </head>
 
 <body>
-    <section class="hero is-primary is-fullheight">
-
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    
-                    <div id="navbarMenuHeroA" class="navbar-menu" style="display: flex; justify-content: space-between;">
-                        <div class="navbar">
-                            <a href="{{ url_for('main.index') }}" class="navbar-item">
-                                Главная
-                            </a>
-                        </div>
-                        <div class="navbar">
-                            <a href="#" class="navbar-item">
-                                Telegram
-                            </a>
-                            <a href="https://github.com" class="navbar-item">
-                                Git
-                            </a>
-                        </div>
-                        <div class="navbar">
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('main.profile') }}" class="navbar-item">
-                                Мониторинг
-                            </a>
-                            {% endif %}
-                            {% if not current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                                Войти
-                            </a>
-                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                                Регистрация
-                            </a>
-                            {% endif %}
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
-                                Выйти
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
+    <nav class="uk-navbar-container" uk-navbar="mode: click" style="display: flex; justify-content: center;">
+        <div class="uk-navbar-left">
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a class="uk-navbar-item uk-logo" href="{{ url_for('main.index') }}">Главная</a>
+                </li>
+                <li>
+                    <a href="https://github.com">Git</a>
+                </li>
+                <li>
+                    <a href="#">Telegram</a>
+                </li>
+            </ul>
         </div>
-
-        <div class="hero-body">
-            <div class="container has-text-centered">
-               {% block content %}
-               {% endblock %}
-            </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav">
+                <li>
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('main.profile') }}">Мониторинг</a>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if not current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.login') }}">Войти</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('auth.signup') }}">Регистрация</a>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.logout') }}">Выйти</a>
+                    {% endif %}
+                </li>
+            </ul>
         </div>
-    </section>
+    </nav>
+    
+    <div class="uk-position-center">
+        {% block content %}
+        {% endblock %}
+    </div> 
 </body>
 
 </html>

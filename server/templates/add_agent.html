@@ -2,19 +2,19 @@
 
 {% block content %}
 <form method="POST" action="/commit_agent">
-    <div class="field">
-        <div class="control">
-            <input class="input is-large" type="text" name="hostname" placeholder="Hostname" autofocus="">
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <input class="uk-input" type="text" name="hostname" placeholder="Hostname" autofocus="">
         </div>
     </div>
 
-    <div class="field">
-        <div class="control">
-            <input class="input is-large" type="text" name="ip" placeholder="IP-address" autofocus="">
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <input class="uk-input" type="text" name="ip" placeholder="IP-address" autofocus="">
         </div>
     </div>
 
-    <button class="button is-block is-info is-large is-fullwidth">Добавить</button>
+    <button class="uk-button uk-button-default uk-button-large">Добавить</button>
 </form>
 
 {% endblock %}

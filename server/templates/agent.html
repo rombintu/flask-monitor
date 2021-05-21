@@ -17,24 +17,23 @@
         {% endwith %}
         <h2 class="title" style="color:black">{{el.hostname}}</h2>
         <h3 class="title" style="color:black">{{el.ip}}</h3>
-        <br>
-        <br>
+        
         <p>CPU: {{el.cpu_min}}/{{el.cpu_max}}</p>
-        <progress class="progress is-large is-info" max="{{el.cpu_max}}" value="{{el.cpu_min}}">monitor</progress>
+        <progress class="uk-progress" max="{{el.cpu_max}}" value="{{el.cpu_min}}">monitor</progress>
         <p>MEM: {{el.mem_min}}/{{el.mem_max}} GB</p>
-        <progress class="progress is-large is-info" max="{{el.mem_max}}" value="{{el.mem_min}}">monitor</progress>
+        <progress class="uk-progress" max="{{el.mem_max}}" value="{{el.mem_min}}">monitor</progress>
         <p>HARD: {{el.hard_min}}/{{el.hard_max}} GB</p>
-        <progress class="progress is-large is-info" max="{{el.hard_max}}" value="{{el.hard_min}}">monitor</progress>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+        <progress class="uk-progress" max="{{el.hard_max}}" value="{{el.hard_min}}">monitor</progress>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
             <form action="/delete_agent" method="POST">
-                <input type="submit" class="button is-danger" value="Удалить агента" id="{{el.id}}">
+                <input type="submit" class="uk-button uk-button-danger" value="Удалить агента" id="{{el.id}}">
                 <input value="{{el.id}}" type="hidden" name="id">
             </form>
             <form action="/update_agent" method="POST">
-                <input type="submit" class="button is-primary" value="Обновить ресурсы" id="{{el.id}}">
+                <input type="submit" class="uk-button uk-button-primary" value="Обновить ресурсы" id="{{el.id}}">
                 <input value="{{el.id}}" type="hidden" name="id">
             </form>
-            <a href="/profile"><button class="button is-info" style="margin: 20px;">В личный кабинет</button></a>
+            <a href="/profile"><button class="uk-button uk-button-default" style="margin: 20px;">В личный кабинет</button></a>
         </div>
         
         
