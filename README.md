@@ -8,7 +8,7 @@ cd flask-auth
 python3 -m venv venv
 pip install -r requirements.txt
 python
->>> from project import db, create_app
+>>> from server import db, create_app
 >>> db.create_all(app=create_app())
 >>> exit
 cp .env.bak .env

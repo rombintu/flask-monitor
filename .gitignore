@@ -1,6 +1,7 @@
 venv
 config.py
-project/db.sqlite
+server/db.sqlite
 __pycache__
 .env
 *.pem
+client/info.json
