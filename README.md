@@ -6,12 +6,14 @@
 git clone https://github.com/rombintu/flask-auth.git
 cd flask-auth
 python3 -m venv venv
+. venv/bin/activate
 pip install -r requirements.txt
 python
 >>> from server import db, create_app
 >>> db.create_all(app=create_app())
 >>> exit
 cp .env.bak .env
+cd server/
 python3 -m flask run
 ```
 
