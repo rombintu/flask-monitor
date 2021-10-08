@@ -1,5 +1,5 @@
-# FLASK MONITORING
-### powered by baso-03-17
+# MONITORING
+### BASO-03-17
 
 ## RUN
 ```
@@ -17,9 +17,25 @@ cd server/
 python3 -m flask run
 ```
 
+
 ## RUN ON HTTPS
 ```
 sudo apt-get install openssl
 openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
 python3 -m flask run --cert=cert.pem --key=key.pem 
+```
+
+# DOCKER RUN
+
+```
+git clone https://github.com/rombintu/flask-auth.git
+cd flask-auth
+docker build -t server-mon server/ 
+docker build -t client-mon client/ 
+docker run -d -p 5000:5000 server-mon
+docker run -d -p 80:80 client-mon
+
+docker exec <server-id-container> ip a 
+
+Go to http://<server-ip>:5000
 ```
