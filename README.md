@@ -3,8 +3,8 @@
 
 ## RUN
 ```
-git clone https://github.com/rombintu/flask-auth.git
-cd flask-auth
+git clone https://github.com/rombintu/flask-flask-monitor.git
+cd flask-monitor
 python3 -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
@@ -28,11 +28,11 @@ python3 -m flask run --cert=cert.pem --key=key.pem
 # DOCKER RUN
 
 ```
-git clone https://github.com/rombintu/flask-auth.git
-cd flask-auth
+git clone https://github.com/rombintu/flask-monitor.git
+cd flask-monitor
 docker build -t server-mon server/ 
 docker build -t client-mon client/ 
-docker run -d -p 5000:5000 server-mon
+docker run -d -p 5000:3000 server-mon
 docker run -d -p 80:80 client-mon
 
 docker exec <server-id-container> ip a 
